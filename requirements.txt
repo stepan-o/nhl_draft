@@ -1,3 +1,6 @@
 matplotlib
-scikit-learn
 seaborn
+numpy
+pandas
+scipy
+scikit-learn
