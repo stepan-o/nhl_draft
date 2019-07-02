@@ -1,3 +1,4 @@
+from math import sqrt
 from sklearn.preprocessing import MinMaxScaler, StandardScaler
 
 
@@ -40,9 +41,13 @@ def norm_cols(df, cols, op='norm'):
         # train the normalization
         scaler = scaler.fit(values)
         print("\nFeature:", col)
-        print('Min: %f, Max: %f' % (scaler.data_min_, scaler.data_max_))
+        if op == 'norm':
+            print('Min: %f, Max: %f' % (scaler.data_min_, scaler.data_max_))
+        elif op == 'std':
+            print('Mean: %f, StandardDeviation: %f' % (scaler.mean_,
+                                                       sqrt(scaler.var_)))  # normalize feature and save as a new column
         # normalize feature and save as a new column
         normalized = scaler.transform(values)
-        df[col + '_norm'] = normalized
-    print("\n ----- All columns normalized!")
+        df[col + '_' + op] = normalized
+    print("\n ----- All columns " + labels[1] + "!")
     return df
