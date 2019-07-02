@@ -2,10 +2,10 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 
-def plot_regplot(df, x, y, name=None, alpha=1,
+def plot_regplot(df, x, y, name=None, alpha=1, order=1,
                  create_figure=True, ax=None, show_plot=True, suptitle=True):
     """
-    plot a regression plot for variables x and y
+    plot a linear model plot for variables x and y
     :param df: pandas DataFrame
         DataFrame containing the variables
     :param x: string
@@ -16,6 +16,8 @@ def plot_regplot(df, x, y, name=None, alpha=1,
         name to display at the top of the plot
     :param alpha: float
         transparency coefficient for the scatter plot
+    :param order: int
+        order of the linear model (default=1)
     :param show_plot: boolean
         whether to show the plot at the end (default=True)
     :param ax: matplotlib axis
@@ -28,7 +30,8 @@ def plot_regplot(df, x, y, name=None, alpha=1,
     """
     if create_figure:
         f, ax = plt.subplots(1)
-    sns.regplot(data=df, x=x, y=y, ax=ax, scatter_kws={'alpha': alpha})
+    sns.regplot(data=df, x=x, y=y, order=order,
+                ax=ax, scatter_kws={'alpha': alpha})
     if suptitle:
         ax.set_title(name + ' dataset'
                             '\nrelationship between ' +
