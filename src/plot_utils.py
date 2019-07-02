@@ -15,6 +15,6 @@ def plot_regplot(df, x, y, name=None):
     :return: None
     """
     ax = sns.regplot(data=df, x=x, y=y)
-    ax.set_title(name +
+    ax.set_title(name + ' dataset'
                  '\nrelationship between ' +
                  x + ' and ' + y)
