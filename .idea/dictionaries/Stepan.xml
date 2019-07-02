@@ -14,6 +14,7 @@
       <w>cska</w>
       <w>defencemen</w>
       <w>dteam</w>
+      <w>figsize</w>
       <w>hischier</w>
       <w>kaggle</w>
       <w>kruskal</w>
@@ -25,12 +26,17 @@
       <w>regplot</w>
       <w>scaler</w>
       <w>scikit</w>
+      <w>scipy</w>
       <w>seaborn</w>
       <w>spearman</w>
       <w>suptitle</w>
+      <w>vline</w>
+      <w>vlines</w>
       <w>wikipedia</w>
       <w>wilcoxon</w>
       <w>wilk</w>
+      <w>xlabel</w>
+      <w>ylabel</w>
     </words>
   </dictionary>
 </component>
