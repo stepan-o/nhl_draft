@@ -7,6 +7,7 @@
       <w>anscombe</w>
       <w>ateam</w>
       <w>barh</w>
+      <w>bihistograms</w>
       <w>blackhawks</w>
       <w>boxplot</w>
       <w>boxplots</w>
@@ -25,6 +26,7 @@
       <w>kurtic</w>
       <w>kurtoses</w>
       <w>kurtosis</w>
+      <w>kurtosistest</w>
       <w>lmplot</w>
       <w>machinelearningmastery</w>
       <w>matplotlib</w>
@@ -39,8 +41,10 @@
       <w>seaborn</w>
       <w>shenton</w>
       <w>skewnesses</w>
+      <w>skewtest</w>
       <w>spearman</w>
       <w>suptitle</w>
+      <w>tukey</w>
       <w>vline</w>
       <w>vlines</w>
       <w>wikipedia</w>
@@ -49,6 +53,7 @@
       <w>wilks</w>
       <w>xlabel</w>
       <w>ylabel</w>
+      <w>youden</w>
     </words>
   </dictionary>
 </component>
