@@ -171,7 +171,10 @@ def fit_norm_dist(series, h_bins='auto',
 
     if t_k2:
         stat, p = normaltest(series.dropna())
-        print("\n----- D’Agostino’s K^2 normality test results:\nW = {0:.3f}, p-value = {1:.3f}"
-              .format(stat, p))
+        print("\n----- D’Agostino’s K^2 normality test results:"
+              "\ns^2 + k^2 = {0:.3f}, p-value = {1:.3f},"
+              .format(stat, p) + "\nwhere s is the z-score returned "
+                                 "by skewtest and k is the z-score returned by kurtosistest"
+                                 "\nand p-value is a 2-sided chi squared probability for the hypothesis test.")
 
     return series.describe()
