@@ -10,7 +10,8 @@ def fit_norm_dist(series, h_bins='auto',
                   title=None, xlabel=None, ylabel='Distribution',
                   figsize=(6, 6), lab2='from_mean',
                   mean_lift=0.99, std_lift=1.007,
-                  sig_lift=0.03, per_lift=0.1, val_lift=0.23):
+                  sig_lift=0.03, per_lift=0.1, val_lift=0.23,
+                  x_between=None, x_min=None, x_max=None):
     """
 
     :param series: pandas Series
@@ -47,6 +48,12 @@ def fit_norm_dist(series, h_bins='auto',
         lift for percentage captions
     :param val_lift: float
         lift for values captions
+    :param x_min: float
+        estimate probability that x > x_min
+    :param x_max: float
+        estimate probability that x < x_max
+    :param x_between: tuple(float, float)
+        estimate probability that x_min < x < x_max
     :return: series.describe()
         statistical summary of the plotted Series
     """
@@ -111,6 +118,47 @@ def fit_norm_dist(series, h_bins='auto',
     if not title:
         title = "Histogram of {0}".format(series.name)
     ax.set_title(title)
+
+    if x_min:
+        # estimate probability that x > x_min
+        p = (1 - nd.cdf(x_min)) * 100
+        ax.text(mu - 5 * sigma, n.max() * 0.9, "$P ~ ( X > {0} ) ~ = $".format(x_min) +
+                "\n$ = {0:.2f}\%$".format(p))
+        ax2.fill_between(x, 0, y, color='red', alpha=0.2,
+                         where=x > x_min)
+        mask = series > x_min
+        print("Using normal distribution, from the total {0:,} records in the Series, "
+              "{1:,.0f} are expected to have {2} > {3}"
+              .format(len(series), len(series) * p / 100, series.name, x_min),
+              "\n\nActual number of records with {0} > {1}: {2:,}"
+              .format(series.name, x_min, len(series[mask])))
+    elif x_max:
+        # estimate probability that x > x_min
+        p = nd.cdf(x_max) * 100
+        ax.text(mu - 5 * sigma, n.max() * 0.9, "$P ~ ( X < {0} ) ~ = $".format(x_max) +
+                "\n$ = {0:.2f}\%$".format(p))
+        ax2.fill_between(x, 0, y, color='red', alpha=0.2,
+                         where=x < x_max)
+        mask = series < x_max
+        print("Using normal distribution, from the total {0:,} records in the Series, "
+              "{1:,.0f} are expected to have {2} < {3}"
+              .format(len(series), len(series) * p / 100, series.name, x_max),
+              "\n\nActual number of records with {0} < {1}: {2:,}"
+              .format(series.name, x_max, len(series[mask])))
+    elif x_between:
+        # estimate probability that x_min < x < x_max
+        x_min, x_max = x_between
+        p = (nd.cdf(x_max) - nd.cdf(x_min)) * 100
+        ax.text(mu - 5 * sigma, n.max() * 0.9, "$P ~ ( {0} < X < {1} ) ~ = $".format(x_min, x_max) +
+                "\n$ = {0:.2f}\%$".format(p))
+        ax2.fill_between(x, 0, y, color='red', alpha=0.2,
+                         where=np.logical_and(x > x_min, x < x_max))
+        mask = np.logical_and(series < x_max, series > x_min)
+        print("Using normal distribution, from the total {0:,} records in the Series, "
+              "{1:,.0f} are expected to have {2} < {3} < {4}"
+              .format(len(series), len(series) * p / 100, x_min, series.name, x_max),
+              "\n\nActual number of records with {0} < {1} < {2}: {3:,}"
+              .format(x_min, series.name, x_max, len(series[mask])))
 
     if show_plot:
         plt.show()
