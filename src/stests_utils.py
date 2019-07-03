@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from scipy.stats import norm
+from scipy.stats import norm, shapiro, normaltest
 
 
 def fit_norm_dist(series, h_bins='auto',
@@ -11,7 +11,8 @@ def fit_norm_dist(series, h_bins='auto',
                   figsize=(6, 6), lab2='from_mean',
                   mean_lift=0.99, std_lift=1.007,
                   sig_lift=0.03, per_lift=0.1, val_lift=0.23,
-                  x_between=None, x_min=None, x_max=None):
+                  x_between=None, x_min=None, x_max=None,
+                  t_shapiro=True, t_k2=True):
     """
 
     :param series: pandas Series
@@ -162,5 +163,15 @@ def fit_norm_dist(series, h_bins='auto',
 
     if show_plot:
         plt.show()
+
+    if t_shapiro:
+        stat, p = shapiro(series.dropna())
+        print("\n----- Shapiro-Wilks normality test results:\nW = {0:.3f}, p-value = {1:.3f}"
+              .format(stat, p))
+
+    if t_k2:
+        stat, p = normaltest(series.dropna())
+        print("\n----- D’Agostino’s K^2 normality test results:\nW = {0:.3f}, p-value = {1:.3f}"
+              .format(stat, p))
 
     return series.describe()
