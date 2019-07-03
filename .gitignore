@@ -1,6 +1,5 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
-*.py[cod]
 *$py.class
 
 # C extensions
@@ -115,4 +114,4 @@ dmypy.json
 
 # local PyCharm configurations
 .idea/workspace.xml
-design/~$players_table_schema.xlsx
+methodology/design/~$players_table_schema.xlsx
