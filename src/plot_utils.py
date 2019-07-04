@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 
-def plot_regplot(df, x, y, name=None, alpha=1, order=1,
+def plot_regplot(df, x, y, name=None, alpha=1, order=1, color='blue',
                  create_figure=True, ax=None, show_plot=True, suptitle=True):
     """
     plot a linear model plot for variables x and y
@@ -30,7 +30,7 @@ def plot_regplot(df, x, y, name=None, alpha=1, order=1,
     """
     if create_figure:
         f, ax = plt.subplots(1)
-    sns.regplot(data=df, x=x, y=y, order=order,
+    sns.regplot(data=df, x=x, y=y, order=order, color=color,
                 ax=ax, scatter_kws={'alpha': alpha})
     if suptitle:
         ax.set_title(name + ' dataset'
