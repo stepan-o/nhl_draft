@@ -50,7 +50,7 @@ def plot_decision_regions(df, xcol1, xcol2, ycol, classifier, test_idx=None,
     # setup marker generator and color map
     markers = ('s', 'x', 'o', '^', 'v')
     colors = ('red', 'blue', 'lightgreen', 'gray', 'cyan')
-    cmap = ListedColormap(colors[:len(np.unique(y))])
+    cmap = ListedColormap(colors[:len(np.unique(df[ycol]))])
 
     # plot the decision surface
     x1_min, x1_max = df[xcol1].min() - 1, df[xcol1].max() + 1
