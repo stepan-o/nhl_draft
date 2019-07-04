@@ -32,6 +32,8 @@ def csv_to_df_rec(rec_name, suffix=None):
         suffix to the file name (e.g., '_new_cols')
     :return: df: pandas DataFrame
         DataFrame with data from .csv file
+             name: string
+        name of the Records file
     """
     rec_file = 'data/nhl_api/records/records_main.csv'
     df_rec = pd.read_csv(rec_file)
@@ -49,4 +51,20 @@ def csv_to_df_rec(rec_name, suffix=None):
           "\nwith {0:,} rows\nand {1:,} columns"
           .format(df.shape[0], df.shape[1]) +
           "\n-- Column names:\n", df.columns)
-    return df
+    return df, name
+
+
+def df_to_csv(df: pd.DataFrame, save_path: object):
+    """
+    save DataFrame to a file
+    :param df: pandas DataFrame
+        DataFrame to be saved
+    :param save_path: string
+        where to save the file
+    :return:
+    """
+    t = time()
+    df.to_csv(save_path, index=False)
+    elapsed = time() - t
+    print("DataFrame saved to file:\n", save_path,
+          "\ntook {0:.2f} seconds".format(elapsed))
