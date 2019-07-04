@@ -14,13 +14,16 @@
       <w>bulsink</w>
       <w>capitalizations</w>
       <w>cdots</w>
+      <w>cmap</w>
       <w>cska</w>
+      <w>datasets</w>
       <w>defenceman</w>
       <w>defencemen</w>
       <w>displaystyle</w>
       <w>dteam</w>
       <w>figsize</w>
       <w>frequentist</w>
+      <w>gini</w>
       <w>hischier</w>
       <w>kaggle</w>
       <w>kruskal</w>
@@ -31,15 +34,19 @@
       <w>lmplot</w>
       <w>machinelearningmastery</w>
       <w>matplotlib</w>
+      <w>minkowski</w>
+      <w>mirjalili</w>
       <w>operatorname</w>
       <w>pairgrid</w>
       <w>pairplot</w>
+      <w>perceptron</w>
       <w>peterbo</w>
       <w>peterbu</w>
       <w>preprocesing</w>
       <w>preprocessing</w>
       <w>pycache</w>
       <w>quantile</w>
+      <w>raschka</w>
       <w>regplot</w>
       <w>scaler</w>
       <w>scikit</w>
@@ -51,6 +58,7 @@
       <w>spearman</w>
       <w>suptitle</w>
       <w>tukey</w>
+      <w>vahid</w>
       <w>vline</w>
       <w>vlines</w>
       <w>wikipedia</w>
