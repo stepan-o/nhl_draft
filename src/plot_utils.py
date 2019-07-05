@@ -48,10 +48,11 @@ def plot_regplot(df, x, y, name=None, alpha=1, order=1, color='blue',
 
 
 def plot_decision_regions(X, y, classifier, title="", test_idx=None, xlabel="x1", ylabel="x2",
+                          x1_min_rat=0.99, x1_max_rat=1.01, x2_min_rat=0.99, x2_max_rat=1.01,
                           resolution=0.02, alpha=0.5, figsize=(6, 6),
                           markers=('s', 'x', 'o', '^', 'v'),
                           colors=('red', 'blue', 'lightgreen', 'gray', 'cyan'),
-                          res='show', name="_", save_path=""):
+                          result='show', name="_", save_path=""):
     # create figure and axis
     f, ax = plt.subplots(1, figsize=figsize)
     # setup color map
@@ -60,8 +61,8 @@ def plot_decision_regions(X, y, classifier, title="", test_idx=None, xlabel="x1"
     x1, x2 = X.iloc[:, 0].values, X.iloc[:, 1].values
 
     # plot the decision surface
-    x1_min, x1_max = x1.min() - 1, x1.max() + 1
-    x2_min, x2_max = x2.min() - 1, x2.max() + 1
+    x1_min, x1_max = x1.min() * x1_min_rat, x1.max() * x1_max_rat
+    x2_min, x2_max = x2.min() * x2_min_rat, x2.max() * x2_max_rat
     xx1, xx2 = np.meshgrid(np.arange(x1_min, x1_max, resolution),
                            np.arange(x2_min, x2_max, resolution))
     Z = classifier.predict(np.array([xx1.ravel(), xx2.ravel()]).T)
@@ -91,12 +92,12 @@ def plot_decision_regions(X, y, classifier, title="", test_idx=None, xlabel="x1"
     ax.set_xlabel(xlabel)
     ax.set_ylabel(ylabel)
 
-    if res == 'show':
+    if result == 'show':
         plt.show()
-    elif res == 'save':
+    elif result == 'save':
         path = 'img/decision_boundaries/' + save_path + '_'.join([xlabel, ylabel, name]) + '.png'
         f.savefig(path, dpi=300)
         plt.close(f)
         print("Plot saved to file", path)
     else:
-        return "Parameter 'res' must be set to either 'show' or 'save'."
+        return "Parameter 'result' must be set to either 'show' or 'save'."
