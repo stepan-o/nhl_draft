@@ -25,8 +25,8 @@ def fit_class(X, y, test_size=0.3, stratify_y=True, scale=None,
         stratify = y
     else:
         stratify = None
-    print("----- Fitting classification algorithms to predict", y.name, "from", xlabel, ylabel,
-          "\nTotal samples in the dataset: {0:,}".format(len(X)))
+    print("\n----- Fitting classification algorithms to predict", y.name, "from", xlabel, ylabel,
+          "\n\nTotal samples in the dataset: {0:,}".format(len(X)))
     X_train, X_test, y_train, y_test = \
         train_test_split(X, y, test_size=0.3, random_state=random_state, stratify=stratify)
     print('Labels counts in y_train:', np.bincount(y_train),
