@@ -1,0 +1,17 @@
+[GitHub Flavored Markdown Spec](https://github.github.com/gfm/)
+# Description of methodology
+# Choosing a classification algorithm
+From [Python Machine Learning - Second Edition By Sebastian Raschka, Vahid Mirjalili](https://www.packtpub.com/big-data-and-business-intelligence/python-machine-learning-second-edition)
+
+Choosing an appropriate classification algorithm for a particular problem task requires practice; each algorithm has its own quirks and is based on certain assumptions. To restate the No Free Lunch theorem by David H. Wolpert, no single classifier works best across all possible scenarios ([The Lack of A Priori Distinctions Between Learning Algorithms, Wolpert and David H, Neural Computation 8.7 (1996): 1341-1390](http://cognet.mit.edu.myaccess.library.utoronto.ca/journal/10.1162/neco.1996.8.7.1341)). In practice, it is always recommended that you compare the performance of at least a handful of different learning algorithms to select the best model for the particular problem; these may differ in the number of features or samples, the amount of noise in a dataset, and whether the classes are linearly separable or not.
+### Five main steps to train a machine learning algorithm
+Eventually, the performance of a classifier—computational performance as well as predictive power—depends heavily on the underlying data that is available for learning. The five main steps that are involved in training a machine learning algorithm can be summarized as follows:
+1. Selecting features and collecting training samples.
+2. Choosing a performance metric.
+3. Choosing a classifier and optimization algorithm.
+4. Evaluating the performance of the model.
+5. Tuning the algorithm.
+
+The `scikit-learn` library in Python offers not only a large variety of learning algorithms, but also many convenient functions to preprocess data and to fine-tune and evaluate our models.
+### Encoding target variables
+Although many `scikit-learn` functions and class methods also work with class labels in string format, using integer labels is a recommended approach to avoid technical glitches and improve computational performance due to a smaller memory footprint; furthermore, encoding class labels as integers is a common convention among most machine learning libraries.
