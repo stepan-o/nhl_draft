@@ -63,9 +63,11 @@
       <w>regplot</w>
       <w>rosenblatt</w>
       <w>scaler</w>
+      <w>scatterplot</w>
       <w>scikit</w>
       <w>scipy</w>
       <w>seaborn</w>
+      <w>setosa</w>
       <w>shenton</w>
       <w>simd</w>
       <w>skewnesses</w>
@@ -76,6 +78,7 @@
       <w>tukey</w>
       <w>vahid</w>
       <w>vdots</w>
+      <w>versicolor</w>
       <w>vline</w>
       <w>vlines</w>
       <w>wikipedia</w>
