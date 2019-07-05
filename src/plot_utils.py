@@ -20,6 +20,8 @@ def plot_regplot(df, x, y, name=None, alpha=1, order=1, color='blue',
         transparency coefficient for the scatter plot
     :param order: int
         order of the linear model (default=1)
+    :param color: string
+        color to use for scatter points
     :param show_plot: boolean
         whether to show the plot at the end (default=True)
     :param ax: matplotlib axis
@@ -45,27 +47,32 @@ def plot_regplot(df, x, y, name=None, alpha=1, order=1, color='blue',
         plt.show()
 
 
-def plot_decision_regions(df, xcol1, xcol2, ycol, classifier, test_idx=None,
-                          resolution=0.02, alpha=0.5):
-    # setup marker generator and color map
-    markers = ('s', 'x', 'o', '^', 'v')
-    colors = ('red', 'blue', 'lightgreen', 'gray', 'cyan')
-    cmap = ListedColormap(colors[:len(np.unique(df[ycol]))])
+def plot_decision_regions(X, y, classifier, title="", test_idx=None, xlabel="x1", ylabel="x2",
+                          resolution=0.02, alpha=0.5, figsize=(6, 6),
+                          markers=('s', 'x', 'o', '^', 'v'),
+                          colors=('red', 'blue', 'lightgreen', 'gray', 'cyan'),
+                          res='show', name="_", save_path=""):
+    # create figure and axis
+    f, ax = plt.subplots(1, figsize=figsize)
+    # setup color map
+    cmap = ListedColormap(colors[:len(np.unique(y))])
+    # get features
+    x1, x2 = X.iloc[:, 0].values, X.iloc[:, 1].values
 
     # plot the decision surface
-    x1_min, x1_max = df[xcol1].min() - 1, df[xcol1].max() + 1
-    x2_min, x2_max = df[xcol2].min() - 1, df[xcol2].max() + 1
+    x1_min, x1_max = x1.min() - 1, x1.max() + 1
+    x2_min, x2_max = x2.min() - 1, x2.max() + 1
     xx1, xx2 = np.meshgrid(np.arange(x1_min, x1_max, resolution),
                            np.arange(x2_min, x2_max, resolution))
     Z = classifier.predict(np.array([xx1.ravel(), xx2.ravel()]).T)
     Z = Z.reshape(xx1.shape)
     plt.contourf(xx1, xx2, Z, alpha=0.3, cmap=cmap)
-    plt.xlim(xx1.min(), xx1.max())
-    plt.ylim(xx2.min(), xx2.max())
+    ax.set_xlim(xx1.min(), xx1.max())
+    ax.set_ylim(xx2.min(), xx2.max())
 
-    for idx, cl in enumerate(np.unique(df[ycol])):
-        mask = df[ycol] == cl
-        plt.scatter(x=df.loc[mask, xcol1], y=df.loc[mask, xcol2],
+    for idx, cl in enumerate(np.unique(y)):
+        mask = y == cl
+        plt.scatter(x=x1[mask], y=x2[mask],
                     alpha=alpha, c=colors[idx],
                     marker=markers[idx], label=cl,
                     edgecolor='black')
@@ -73,9 +80,23 @@ def plot_decision_regions(df, xcol1, xcol2, ycol, classifier, test_idx=None,
     # highlight test samples
     if test_idx:
         # plot all samples
-        X_test, y_test = X[test_idx, :], y[test_idx]
+        x1_test, x2_test = x1[test_idx, :], x2[test_idx]
 
-        plt.scatter(X_test[:, 0], X_test[:, 1],
+        plt.scatter(x1_test[:, 0], x2_test[:, 1],
                     c='', edgecolor='black', alpha=1.0,
                     linewidth=1, marker='o',
                     s=100, label='test set')
+
+    ax.set_title(title)
+    ax.set_xlabel(xlabel)
+    ax.set_ylabel(ylabel)
+
+    if res == 'show':
+        plt.show()
+    elif res == 'save':
+        path = 'img/decision_boundaries/' + save_path + '_'.join([xlabel, ylabel, name]) + '.png'
+        f.savefig(path, dpi=300)
+        plt.close(f)
+        print("Plot saved to file", path)
+    else:
+        return "Parameter 'res' must be set to either 'show' or 'save'."
