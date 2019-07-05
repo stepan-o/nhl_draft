@@ -1,0 +1,27 @@
+%! Author = Stepan
+%! Date = 05-Jul-19
+
+% Preamble
+\documentclass[12pt, letterpaper]{article}
+\usepackage[utf8]{inputenc}
+
+\title{Partial derivative of the cost function J with respect to weight w_j}
+\author{Stepan Oskin \thanks{took from a book by Sebastian Raschka}}
+\date{July 2019}
+
+% Packages
+\usepackage{amsmath}
+
+% Document
+\begin{document}
+
+    \frac{ \partial{J} } { \partial{w_j} } =
+    \frac{\partial} {\partial{w_j}} \frac{1} {2} \sum \limits_i \left( y^{(i)} - \phi \left( z^{(i)} \right) \right) ^2 =
+    \frac{1} {2} \frac{\partial} {\partial{w_j}} \sum \limits_i \left( y^{(i)} - \phi \left( z^{(i)} \right) \right) ^2 =
+    \frac{1} {2} \sum \limits_i 2 \left( y^{(i)} - \phi \left( z^{(i)} \right) \right) \frac{\partial} {\partial{w_j}} \left( y^{(i)} - \phi \left( z^{(i)} \right) \right) =
+    \sum \limits_i \left( y^{(i)} - \phi \left( z^{(i)} \right) \right) \frac{\partial} {\partial{w_j}} \left( y^{(i)} - \sum \limits_i \left( w_j^{(i)} x_j^{(i)} \right) \right) =
+    \sum \limits_i \left( y^{(i)} - \phi \left( z^{(i)} \right) \right) \left( - x_j^{(i)} \right) =
+    - \sum \limits_i \left( y^{(i)} - \phi \left( z^{(i)} \right) \right) x_j^{(i)}
+
+
+\end{document}
