@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
 import seaborn as sns
 from matplotlib.colors import ListedColormap
 
@@ -49,7 +50,7 @@ def plot_regplot(df, x, y, name=None, alpha=1, order=1, color='blue',
 
 def plot_decision_regions(X, y, classifier, title="", test_idx=None, xlabel="x1", ylabel="x2",
                           x1_min_rat=0.99, x1_max_rat=1.01, x2_min_rat=0.99, x2_max_rat=1.01,
-                          resolution=0.02, alpha=0.5, figsize=(6, 6),
+                          resolution=0.02, alpha=0.5, figsize=(6, 6), legend_loc='best',
                           markers=('s', 'x', 'o', '^', 'v'),
                           colors=('red', 'blue', 'lightgreen', 'gray', 'cyan'),
                           result='show', name="_", save_path=""):
@@ -57,8 +58,14 @@ def plot_decision_regions(X, y, classifier, title="", test_idx=None, xlabel="x1"
     f, ax = plt.subplots(1, figsize=figsize)
     # setup color map
     cmap = ListedColormap(colors[:len(np.unique(y))])
-    # get features
-    x1, x2 = X.iloc[:, 0].values, X.iloc[:, 1].values
+    if type(X) == pd.core.frame.DataFrame:
+        # get features
+        x1, x2 = X.iloc[:, 0].values, X.iloc[:, 1].values
+    elif type(X) == np.ndarray:
+        x1, x2 = X[:, 0], X[:, 1]
+    else:
+        raise AttributeError("Parameter 'X' must be either a NumPy array or a Pandas DataFrame."
+                             "{0} provided.".format(type(X)))
 
     # plot the decision surface
     x1_min, x1_max = x1.min() * x1_min_rat, x1.max() * x1_max_rat
@@ -91,6 +98,7 @@ def plot_decision_regions(X, y, classifier, title="", test_idx=None, xlabel="x1"
     ax.set_title(title)
     ax.set_xlabel(xlabel)
     ax.set_ylabel(ylabel)
+    plt.legend(loc=legend_loc)
 
     if result == 'show':
         plt.show()
