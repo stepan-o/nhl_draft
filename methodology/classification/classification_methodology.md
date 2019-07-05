@@ -16,7 +16,7 @@ The `scikit-learn` library in Python offers not only a large variety of learning
 ### Encoding target variables
 Although many `scikit-learn` functions and class methods also work with class labels in string format, using integer labels is a recommended approach to avoid technical glitches and improve computational performance due to a smaller memory footprint; furthermore, encoding class labels as integers is a common convention among most machine learning libraries.
 ### Multi-class classification
-Most algorithms in `scikit-learn` already support multi-class classification by default via the One-versus-Rest (OvR) method.
+Most algorithms in `scikit-learn` already support multi-class classification by default via the One-versus-Rest (OvR) method. **One-versus-All (OvA)**, or sometimes also called **One-versus-Rest (OvR)**, is a technique that allows us to extend a binary classifier to multi-class problems. Using OvA, we can train one classifier per class, where the particular class is treated as the positive class and the samples from all other classes are considered negative classes. If we were to classify a new data sample, we would use our n classifiers, where n is the number of class labels, and assign the class label with the highest confidence to the particular sample. In the case of the perceptron, we would use OvA to choose the class label that is associated with the largest absolute net input value.
 ### Train-test split
 To evaluate how well a trained model performs on unseen data, we will split the dataset into separate training and test datasets. Using the `train_test_split` function from `scikit-learn`'s `model_selection` module, we randomly split the X and y arrays into 30 percent test data and 70 percent training data.
 
