@@ -38,6 +38,7 @@
       <w>kurtoses</w>
       <w>kurtosis</w>
       <w>kurtosistest</w>
+      <w>lapack</w>
       <w>lmplot</w>
       <w>machinelearningmastery</w>
       <w>mathbb</w>
@@ -66,6 +67,7 @@
       <w>scipy</w>
       <w>seaborn</w>
       <w>shenton</w>
+      <w>simd</w>
       <w>skewnesses</w>
       <w>skewtest</w>
       <w>spearman</w>
