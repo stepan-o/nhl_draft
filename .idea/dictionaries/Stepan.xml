@@ -14,6 +14,7 @@
       <w>bulsink</w>
       <w>capitalizations</w>
       <w>cdots</w>
+      <w>classi</w>
       <w>cmap</w>
       <w>cska</w>
       <w>datasets</w>
@@ -25,6 +26,7 @@
       <w>frequentist</w>
       <w>gini</w>
       <w>hischier</w>
+      <w>hyperparameter</w>
       <w>kaggle</w>
       <w>kruskal</w>
       <w>kurtic</w>
@@ -36,9 +38,11 @@
       <w>matplotlib</w>
       <w>minkowski</w>
       <w>mirjalili</w>
+      <w>njobs</w>
       <w>operatorname</w>
       <w>pairgrid</w>
       <w>pairplot</w>
+      <w>perc</w>
       <w>perceptron</w>
       <w>peterbo</w>
       <w>peterbu</w>
@@ -65,7 +69,10 @@
       <w>wilcoxon</w>
       <w>wilk</w>
       <w>wilks</w>
+      <w>wolpert</w>
+      <w>xcol</w>
       <w>xlabel</w>
+      <w>ycol</w>
       <w>ylabel</w>
       <w>youden</w>
     </words>
