@@ -80,10 +80,10 @@ def plot_decision_regions(X, y, classifier, title="", test_idx=None, xlabel="x1"
 
     for idx, cl in enumerate(np.unique(y)):
         mask = y == cl
-        plt.scatter(x=x1[mask], y=x2[mask],
-                    alpha=alpha, c=colors[idx],
-                    marker=markers[idx], label=cl,
-                    edgecolor='black')
+        ax.scatter(x=x1[mask], y=x2[mask],
+                   alpha=alpha, c=colors[idx],
+                   marker=markers[idx], label=cl,
+                   edgecolor='black')
 
     # highlight test samples
     if test_idx:
