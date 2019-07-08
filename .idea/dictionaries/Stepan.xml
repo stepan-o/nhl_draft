@@ -20,6 +20,7 @@
       <w>cdots</w>
       <w>classi</w>
       <w>cmap</w>
+      <w>collinearity</w>
       <w>cska</w>
       <w>culloch</w>
       <w>datasets</w>
@@ -32,9 +33,11 @@
       <w>frequentist</w>
       <w>gini</w>
       <w>graphviz</w>
+      <w>gridline</w>
       <w>hischier</w>
       <w>hyperparameter</w>
       <w>inear</w>
+      <w>infty</w>
       <w>ipynb</w>
       <w>kaggle</w>
       <w>kruskal</w>
@@ -44,6 +47,8 @@
       <w>kurtosistest</w>
       <w>lapack</w>
       <w>lmplot</w>
+      <w>logit</w>
+      <w>lrgd</w>
       <w>machinelearningmastery</w>
       <w>mathbb</w>
       <w>matplotlib</w>
@@ -59,6 +64,7 @@
       <w>nonlin</w>
       <w>operatorname</w>
       <w>oskin</w>
+      <w>overfitting</w>
       <w>pairgrid</w>
       <w>pairplot</w>
       <w>perc</w>
@@ -87,10 +93,13 @@
       <w>stepan</w>
       <w>subfigure</w>
       <w>suptitle</w>
+      <w>tradeoff</w>
       <w>tukey</w>
+      <w>underfitting</w>
       <w>vahid</w>
       <w>vdots</w>
       <w>versicolor</w>
+      <w>virginica</w>
       <w>vline</w>
       <w>vlines</w>
       <w>widrow</w>
