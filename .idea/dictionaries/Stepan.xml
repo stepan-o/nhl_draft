@@ -30,6 +30,7 @@
       <w>dteam</w>
       <w>euron</w>
       <w>figsize</w>
+      <w>forall</w>
       <w>frequentist</w>
       <w>gini</w>
       <w>graphviz</w>
@@ -46,6 +47,8 @@
       <w>kurtosis</w>
       <w>kurtosistest</w>
       <w>lapack</w>
+      <w>liblinear</w>
+      <w>libsvm</w>
       <w>lmplot</w>
       <w>logit</w>
       <w>lrgd</w>
@@ -62,6 +65,7 @@
       <w>nabla</w>
       <w>njobs</w>
       <w>nonlin</w>
+      <w>nonlinearly</w>
       <w>operatorname</w>
       <w>oskin</w>
       <w>overfitting</w>
@@ -97,6 +101,7 @@
       <w>tukey</w>
       <w>underfitting</w>
       <w>vahid</w>
+      <w>vapnik</w>
       <w>vdots</w>
       <w>versicolor</w>
       <w>virginica</w>
