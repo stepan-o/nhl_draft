@@ -21,6 +21,7 @@
       <option name="ignoredIdentifiers">
         <list>
           <option value="pandas.core.frame" />
+          <option value="bool.sum" />
         </list>
       </option>
     </inspection_tool>
