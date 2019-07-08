@@ -87,10 +87,16 @@ def plot_decision_regions(X, y, classifier, title="", test_idx=None, xlabel="x1"
 
     # highlight test samples
     if test_idx:
-        # plot all samples
-        x1_test, x2_test = x1[test_idx, :], x2[test_idx]
+        if type(X) == pd.core.frame.DataFrame:
+            # get features
+            x1, x2 = X.iloc[:, 0].values, X.iloc[:, 1].values
+        elif type(X) == np.ndarray:
+            x1, x2 = X[:, 0], X[:, 1]
 
-        plt.scatter(x1_test[:, 0], x2_test[:, 1],
+        # plot all samples
+        x1_test, x2_test = x1[test_idx], x2[test_idx]
+
+        plt.scatter(x1_test, x2_test,
                     c='', edgecolor='black', alpha=1.0,
                     linewidth=1, marker='o',
                     s=100, label='test set')
