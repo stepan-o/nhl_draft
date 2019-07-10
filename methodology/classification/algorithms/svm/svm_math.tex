@@ -53,8 +53,8 @@
     One reasonable choice as the best hyperplane is the one that represents the largest separation, or margin,
     between the two classes.
     So we choose the hyperplane so that the distance from it to the nearest data point on each side is maximized.
-    If such a hyperplane exists, it is known as the maximum-margin hyperplane and the linear classifier it defines
-    is known as a maximum-margin classifier;
+    If such a hyperplane exists, it is known as the \textbf{maximum-margin hyperplane} and the linear classifier it defines
+    is known as a \textbf{maximum-margin classifier};
     or equivalently, the perceptron of optimal stability.
 
     \section{Maximum margin classification with support vector machines} \label{sec:max_marg_class}
@@ -62,16 +62,16 @@
     Support Vector Machine (SVM) is a powerful and widely used learning algorithm, which can be considered
     an extension of the perceptron.
     For perceptron algorithm, optimization objective is to minimize misclassification errors.
-    However, in SVMs the optimization objective is to maximize the margin.
-    The margin is defined as the distance between the separating hyperplane (decision boundary) and the training
-    samples that are closest to this hyperplane, which are the so-called support vectors.
+    However, in SVMs the optimization objective is to \textbf{maximize the margin}.
+    The margin is defined as the \textbf{distance between the separating hyperplane (decision boundary) and the training
+    samples} that are closest to this hyperplane, which are the so-called \textbf{support vectors}.
     This is illustrated in figure~\ref{fig:svm}:
 
     \begin{figure}[hbt!]
         \centering
         \includegraphics[width=1\linewidth,trim=4 4 4 4,clip]{img/svm.jpg}
         \caption{Optimization objective in Support Vector Machines is to maximize the margin between the training samples
-        that are closest to the hyperplane (decision boundary)}
+        that are closest to the hyperplane (decision boundary).}
         \label{fig:svm}
     \end{figure}
 
@@ -158,10 +158,6 @@
         \frac{1} {2} \norm{\vect{w}}^2
     \end{equation}
     which can be solved by quadratic programming.
-    You can learn more about support vector machines in \textbf{The Nature of Statistical Learning Theory,
-    Springer Science+Business Media, Vladimir Vapnik}, 2000 or Chris J.C.\ Burges' excellent explanation in
-    \textbf{A Tutorial on Support Vector Machines for Pattern Recognition (Data Mining and Knowledge Discovery,
-    2(2):} 121--167, 1998).
 
     \section{Dealing with a non-linearly separable case using slack variables} \label{sec:slack_vars}
 
@@ -211,42 +207,66 @@
     in the context of regularized regression where decreasing the value of \texttt{C} increases the bias and lowers the
     variance of the model.
 
-    The three decision regions of the SVM, visualized after training the classifier on the Iris flower dataset, are presented on figure \ref{fig:iris_svm_linear}:
+    The three decision regions of the SVM, visualized after training the classifier on the Iris flower dataset, are presented on figure~\ref{fig:iris_svm_linear}.
 
     \begin{figure}[hbt!]
         \centering
-        \includegraphics[width=1\linewidth,trim=4 4 4 4,clip]{svm/img/iris_svm_linear.png}
-        \caption{The three decision regions of the linear SVM after training the classifier on the Iris flower dataset. Results of SVM are similar to those yielded by a Logistic Regression model.}
+        \includegraphics[width=1\linewidth,trim=4 4 4 4,clip]{img/iris_svm_linear.png}
+        \caption{The three decision regions of the linear SVM after training the classifier on the Iris flower dataset.
+        Results of SVM are similar to those yielded by a Logistic Regression model.}
         \label{fig:iris_svm_linear}
     \end{figure}
 
     \section{Logistic regression versus support vector machines} \label{sec:log_reg_vs_svm}
 
-    In practical classification tasks, linear logistic regression and linear SVMs often yield very similar results. Logistic regression tries to maximize the conditional likelihoods of the training data, which makes it more prone to outliers than SVMs, which mostly care about the points that are closest to the decision boundary (support vectors). On the other hand, logistic regression has the advantage that it is a simpler model and can be implemented more easily. Furthermore, logistic regression models can be easily updated, which is attractive when working with streaming data.
+    In practical classification tasks, linear logistic regression and linear SVMs often yield very similar results.
+    Logistic regression tries to maximize the conditional likelihoods of the training data, which makes it more prone to outliers than SVMs, which mostly care about the points that are closest to the decision boundary (support vectors).
+    On the other hand, logistic regression has the advantage that it is a simpler model and can be implemented more easily.
+    Furthermore, logistic regression models can be easily updated, which is attractive when working with streaming data.
 
-    \section{SVM implementations in \texttt{scikit-learn}}
+    \section{SVM implementations in \texttt{scikit-learn}}\label{sec:svm_sklearn}
 
-    For practical purposes, it is better to use \texttt{scikit-learn}'s more optimized implementation of SVM that also supports multi-class settings off the shelf (OvR by default). The \texttt{scikit-learn} library's \texttt{Perceptron} and \texttt{LogisticRegression} classes make use of the [LIBLINEAR library](http://www.csie.ntu.edu.tw/~cjlin/liblinear/), which is a highly optimized C/C++ library developed at the National Taiwan University. Similarly, the \texttt{SVC} class that we used to train an SVM makes use of [LIBSVM](http://www.csie.ntu.edu.tw/~cjlin/libsvm/), which is an equivalent C/C++ library specialized for SVMs.
+    For practical purposes, it is better to use \texttt{scikit-learn}'s more optimized implementation of SVM that also supports multi-class settings off the shelf (OvR by default).
+    The \texttt{scikit-learn} library's \texttt{Perceptron} and \texttt{LogisticRegression} classes make use of the \textit{LIBLINEAR} library, which is a highly optimized C/C++ library developed at the National Taiwan University\cite{Fan2008}.
+    Similarly, the \texttt{SVC} class that we used to train an SVM makes use of \textit{LIBSVM} library, which is an equivalent C/C++ library specialized for SVMs\cite{Chang2001}.
 
-    The advantage of using LIBLINEAR and LIBSVM over native Python implementations is that they allow the extremely quick training of large amounts of linear classifiers. However, sometimes our datasets are too large to fit into computer memory. Thus, \texttt{scikit-learn} also offers alternative implementations via the \texttt{SGDClassifier} class, which also supports online learning via the \texttt{partial\_fit} method. The concept behind the \texttt{SGDClassifier} class is similar to the stochastic gradient algorithm that we implemented for Adaline.
+    The advantage of using LIBLINEAR and LIBSVM over native Python implementations is that they allow the extremely quick training of large amounts of linear classifiers.
+    However, sometimes our datasets are too large to fit into computer memory.
+    Thus, \texttt{scikit-learn} also offers alternative implementations via the \texttt{SGDClassifier} class, which also supports online learning via the \texttt{partial\_fit} method.
+    The concept behind the \texttt{SGDClassifier} class is similar to the stochastic gradient algorithm that we implemented for Adaline.
 
     \section{Kernel methods for linearly inseparable data} \label{sec:kernel}
 
-    Another reason why SVMs enjoy high popularity among machine learning practitioners is that it can be easily \textbf{kernelized} to solve nonlinear classification problems. On~\ref{fig:non_lin_data} below we can see an example of that presents a nonlinear classification problem. This dataset was randomly generated using \texttt{NumPy} library in Python; it consists of 100 samples of class 1 and 100 samples of class -1, and has a form of a XOR gate.
-
     \begin{figure}[hbt!]
         \centering
-        \includegraphics[width=1\linewidth,trim=4 4 4 4,clip]{svm/img/non_lin_data.png}
-        \caption{Sample dataset generated in a form of a XOR gate, where 100 samples are assigned the class label 1, and 100 samples are assigned class label -1. In this dataset, samples from positive and negative classes cannot be separated well using a linear hyperplane as a decision boundary.}
+        \includegraphics[width=1\linewidth,trim=4 4 4 4,clip]{img/non_lin_data.png}
+        \caption{Sample dataset generated in a form of a XOR gate, where 100 samples are assigned the class label 1, and 100 samples are assigned class label -1.
+        In this dataset, samples from positive and negative classes cannot be separated well using a linear hyperplane as a decision boundary.}
         \label{fig:non_lin_data}
     \end{figure}
+
+    Another reason why SVMs enjoy high popularity among machine learning practitioners is that it can be easily \textbf{kernelized} to solve nonlinear classification problems.
+    On figure~\ref{fig:non_lin_data} we can see an example of a nonlinear classification problem.
+    This dataset was randomly generated using \texttt{NumPy} library in Python;
+    it consists of 100 samples of class 1 and 100 samples of class -1, and has a form of a XOR gate.
 
     Obviously, we would not be able to separate samples from the
     positive and negative class very well using a linear hyperplane
     as a decision boundary via the linear logistic regression or
     linear SVM model that we discussed in earlier sections.
 
-    The basic idea behind \textbf{kernel methods} to deal with such linearly inseparable data is to create nonlinear combinations of the original features to project them onto a higher-dimensional space via a mapping function $\phi$ where it becomes linearly separable. As shown in figure~\ref{fig:kernel}, we can transform a two-dimensional dataset onto a new three-dimensional feature space where the classes become separable via the following projection:
+    \section{The basic idea behind kernel methods} \label{sec:kern_idea}
+
+    \begin{figure}[hbt!]
+        \centering
+        \includegraphics[width=1\linewidth,trim=4 4 4 4,clip]{img/kernel.jpg}
+        \caption{An example of a linearly inseparable two-dimensional dataset being transformed via a mapping function $\phi$ onto a three-dimensional space, where it becomes linearly separable, and then re-projected back to the two-dimensional space.
+        This transformation represents the basic idea behind kernel methods.}
+        \label{fig:kernel}
+    \end{figure}
+
+    The basic idea behind \textbf{kernel methods} to deal with such linearly inseparable data is to create nonlinear combinations of the original features to project them onto a higher-dimensional space via a mapping function $\phi$ where it becomes linearly separable.
+    As shown in figure~\ref{fig:kernel}, we can transform a two-dimensional dataset onto a new three-dimensional feature space where the classes become separable via the following projection:
 
     \begin{equation}
         \label{eq:kern_ex}
@@ -255,18 +275,15 @@
 
     This allows us to separate the two classes shown in the plot via a linear hyperplane that becomes a nonlinear decision boundary if we project it back onto the original feature space:
 
-    \begin{figure}[hbt!]
-        \centering
-        \includegraphics[width=1\linewidth,trim=4 4 4 4,clip]{svm/img/kernel.jpg}
-        \caption{An example of a linearly inseparable two-dimensional dataset being transformed via a mapping function $\phi$ onto a three-dimensional space, where it becomes linearly separable, and then re-projected back to the two-dimensional space. This transformation represents the basic idea behind kernel methods.}
-        \label{fig:kernel}
-    \end{figure}
+    \section{Using the kernel trick to find separating hyperplanes in high-dimensional space}\label{sec:kernel_trick}
 
-    \section{Using the kernel trick to find separating hyperplanes in high-dimensional space}
+    To solve a nonlinear problem using an SVM, we would transform the training data onto a higher-dimensional feature space via a mapping function $\phi$ and train a linear SVM model to classify the data in this new feature space.
+    Then, we can use the same mapping function to transform new, unseen data to classify it using the linear SVM model.
 
-    To solve a nonlinear problem using an SVM, we would transform the training data onto a higher-dimensional feature space via a mapping function $\phi$ and train a linear SVM model to classify the data in this new feature space. Then, we can use the same mapping function to transform new, unseen data to classify it using the linear SVM model.
-
-    However, one problem with this mapping approach is that the construction of the new features is computationally very expensive, especially if we are dealing with high-dimensional data. This is where the so-called \textbf{kernel trick} comes into play. Although we didn't go into much detail about how to solve the quadratic programming task to train an SVM, in practice all we need is to replace the dot product $\vect{x}^{(i)T}\vect{x}^{(j)}$ by $ \phi \left( \vect{x}^{(i)} \right)^T \phi \left( \vect{x}^{(j)} \right) $. In order to save the expensive step of calculating this dot product between two points explicitly, we define a so-called \textbf{kernel function}:
+    However, one problem with this mapping approach is that the construction of the new features is computationally very expensive, especially if we are dealing with high-dimensional data.
+    This is where the so-called \textbf{kernel trick} comes into play.
+    Although we didn't go into much detail about how to solve the quadratic programming task to train an SVM, in practice all we need is to replace the dot product $\vect{x}^{(i)T}\vect{x}^{(j)}$ by $ \phi \left( \vect{x}^{(i)} \right)^T \phi \left( \vect{x}^{(j)} \right) $.
+    In order to save the expensive step of calculating this dot product between two points explicitly, we define a so-called \textbf{kernel function}:
 
     \begin{equation}
         \label{eq:kernel_func}
@@ -295,26 +312,32 @@
 
     Here, $\large{\gamma = \frac{1} {2 \sigma^2}}$ is a free parameter that is to be optimized.
 
-    Roughly speaking, the term \textbf{kernel} can be interpreted as a \textbf{similarity function} between a pair of samples. The \textbf{minus sign inverts the distance measure into a similarity score}, and, due to the exponential term, the resulting similarity score will fall into a range between 1 (for exactly similar samples) and 0 (for very dissimilar samples).
+    Roughly speaking, the term \textbf{kernel} can be interpreted as a \textbf{similarity function} between a pair of samples.
+    The \textbf{minus sign inverts the distance measure into a similarity score}, and, due to the exponential term, the resulting similarity score will fall into a range between 1 (for exactly similar samples) and 0 (for very dissimilar samples).
 
-    Now that we defined the big picture behind the kernel trick, let us see if we can train a kernel SVM that is able to draw a nonlinear decision boundary that separates the XOR data well. Here, we simply use the \texttt{SVC} class from \texttt{scikit-learn} that and replace the \texttt{kernel='linear'} parameter with \texttt{`kernel='rbf'}. As we can see in the resulting plot on figure \ref{fig:non_lin_data_svm}, the kernel SVM separates the XOR data relatively well:
+    Now that we defined the big picture behind the kernel trick, let us see if we can train a kernel SVM that is able to draw a nonlinear decision boundary that separates the XOR data well.
+    Here, we simply use the \texttt{SVC} class from \texttt{scikit-learn} that and replace the \texttt{kernel='linear'} parameter with \texttt{`kernel='rbf'}.
+    As we can see in the resulting plot on figure~\ref{fig:non_lin_data_svm}, the kernel SVM separates the XOR data relatively well:
 
     \begin{figure}[hbt!]
         \centering
-        \includegraphics[width=1\linewidth,trim=4 4 4 4,clip]{svm/img/non_lin_data_svm.png}
-        \caption{Nonlinear decision boundary drawn by a kernel SVM is separating the XOR data relatively well. Cut-off parameter $\gamma$ was set to 0.1.}
+        \includegraphics[width=1\linewidth,trim=4 4 4 4,clip]{img/non_lin_data_svm.png}
+        \caption{Nonlinear decision boundary drawn by a kernel SVM is separating the XOR data relatively well.
+        Cut-off parameter $\gamma$ was set to 0.1.}
         \label{fig:non_lin_data_svm}
     \end{figure}
 
     \section{Cut-off parameter $\gamma$ for the Gaussian sphere} \label{sec:gamma}
 
-    The $\gamma$ parameter, which was set to \texttt{gamma=0.1} in the example with XOR data, can be understood as a \textbf{cut-off} parameter for the Gaussian sphere. If we increase the value for $\gamma$, we increase the influence or reach of the training samples, which leads to a tighter and bumpier decision boundary. To get a better intuition for $\gamma$, below on figure~\ref{fig:iris_svm_rbf} we present the two different values of $\gamma$ (0.2, and 100) applied to an RBF kernel SVM that was used to classify Iris flower dataset:
+    The $\gamma$ parameter, which was set to \texttt{gamma=0.1} in the example with XOR data, can be understood as a \textbf{cut-off} parameter for the Gaussian sphere.
+    If we increase the value for $\gamma$, we increase the influence or reach of the training samples, which leads to a tighter and bumpier decision boundary.
+    To get a better intuition for $\gamma$, below on figure~\ref{fig:iris_svm_rbf} we present the two different values of $\gamma$ (0.2, and 100) applied to an RBF kernel SVM that was used to classify Iris flower dataset:
 
     \begin{figure}[hbt!]
         \centering
         \begin{subfigure}[t]{.48\textwidth}
             \centering
-            \includegraphics[width=\columnwidth]{svm/img/iris_svm_gamma_02.png}
+            \includegraphics[width=\columnwidth]{img/iris_svm_gamma_02.png}
             \caption{$\gamma=0.2$}
             \label{fig:iris_svm_gamma_0.2}
         \end{subfigure}
@@ -322,17 +345,27 @@
         %(or a blank line to force the subfigure onto a new line)
         \begin{subfigure}[t]{.48\textwidth}
             \centering
-            \includegraphics[width=\columnwidth]{svm/img/iris_svm_gamma_100.png}
+            \includegraphics[width=\columnwidth]{img/iris_svm_gamma_100.png}
             \caption{$\gamma=100$}
             \label{fig:iris_svm_gamma_100}
         \end{subfigure}
-        \caption{Different values of parameter $\gamma$ applied to an RBF kernel SVM that was used to classify Iris flower dataset. Large value of $\gamma$ (fig. b) results in the model fitting the training dataset very well, but will likely have a high generalization error on unseen data. This illustrates that the $\gamma$ parameter also plays an important role in controlling overfitting.}
+        \caption{Different values of parameter $\gamma$ applied to an RBF kernel SVM that was used to classify Iris flower dataset.
+        Large value of $\gamma$ (\ref{fig:iris_svm_gamma_100}) results in the model fitting the training dataset very well, but will likely have a high generalization error on unseen data.
+        This illustrates that the $\gamma$ parameter also plays an important role in controlling overfitting.}
         \label{fig:iris_svm_rbf}
     \end{figure}
 
-    If we choose a relatively small value for $\gamma$, the resulting decision boundary of the RBF kernel SVM model will be relatively soft, as shown in figure~\ref{fig:svm_iris_gamma_0.2}. When using a relatively large value of $\gamma$, the decision boundary around the classes 0 and 1 is much tighter, as can be seen in figure~\ref{fig:svm_iris_gamma_100}. Although the model fits the training dataset very well, such a classifier will likely result in a high generalization error on unseen data. This illustrates that the $\gamma$ parameter also plays an important role in controlling overfitting.
+    If we choose a relatively small value for $\gamma$, the resulting decision boundary of the RBF kernel SVM model will be relatively soft, as shown in figure~\ref{fig:iris_svm_gamma_0.2}.
+    When using a relatively large value of $\gamma$, the decision boundary around the classes 0 and 1 is much tighter, as can be seen in figure~\ref{fig:iris_svm_gamma_100}.
+    Although the model fits the training dataset very well, such a classifier will likely result in a high generalization error on unseen data.
+    This illustrates that the $\gamma$ parameter also plays an important role in controlling overfitting.
 
+    \section{More information on SVM} \label{sec:svm_det}
 
+    More detailed description of support vector machines can be found in \textit{The Nature of Statistical Learning Theory} book by Vladimir Vapnik\cite{Vapnik2000}, \textit{A Practical Guide to Support Vector Classification} tutorial from National Taiwan University\cite{Hsu2003}, or Chris J.C.\ Burges' excellent explanation in
+    \textit{A Tutorial on Support Vector Machines for Pattern Recognition}~\cite{Burges1998}.
+
+    \medskip
     \bibliography{svm}
     \bibliographystyle{ieeetr}
 
