@@ -3,6 +3,7 @@
     <words>
       <w>agostino</w>
       <w>alot</w>
+      <w>amsmath</w>
       <w>anova</w>
       <w>anscombe</w>
       <w>aptive</w>
@@ -16,6 +17,7 @@
       <w>boxplot</w>
       <w>boxplots</w>
       <w>bulsink</w>
+      <w>burges</w>
       <w>capitalizations</w>
       <w>cdots</w>
       <w>classi</w>
@@ -33,6 +35,7 @@
       <w>forall</w>
       <w>frequentist</w>
       <w>gini</w>
+      <w>graphicx</w>
       <w>graphviz</w>
       <w>gridline</w>
       <w>hischier</w>
@@ -41,6 +44,7 @@
       <w>infty</w>
       <w>ipynb</w>
       <w>kaggle</w>
+      <w>kernelized</w>
       <w>kruskal</w>
       <w>kurtic</w>
       <w>kurtoses</w>
@@ -63,6 +67,7 @@
       <w>misclassifications</w>
       <w>misclassifies</w>
       <w>nabla</w>
+      <w>newcommand</w>
       <w>njobs</w>
       <w>nonlin</w>
       <w>nonlinearly</w>
@@ -95,6 +100,7 @@
       <w>skewtest</w>
       <w>spearman</w>
       <w>stepan</w>
+      <w>subcaption</w>
       <w>subfigure</w>
       <w>suptitle</w>
       <w>tradeoff</w>
