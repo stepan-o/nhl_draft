@@ -1,4 +1,3 @@
-%! Suppress = EnDash
 %! Author = Stepan Oskin
 %! Date = 10-Jul-19
 
@@ -12,7 +11,7 @@
 % New commands
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
 \newcommand{\vect}[1]{\boldsymbol{#1}}
-\newcommand{\pa}[1]{\partial{#1}}
+
 % Document
 \begin{document}
 
@@ -196,7 +195,7 @@
         \label{perc_correct}
         \begin{gathered}
             \Delta w_j = \eta \left( -1 - (-1) \right) x_j^{(i)} = 0\\
-            \Delta w_j = \eta \left( 1 - 1 \right) x_j^{(i)} = 0
+            \Delta w_j = \eta \left( 1 \textemdash 1 \right) x_j^{(i)} = 0
         \end{gathered}
     \end{equation}
 
@@ -306,7 +305,7 @@
     \section{Training a perceptron model on two classes from the Iris dataset} \label{sec:perc_iris}
 
     To test the perceptron implementation, Iris flower dataset for classification was used, from which two flower classes Setosa and Versicolor were loaded.
-    Although the perceptron rule is not restricted to two dimensions, only two features were considered (\texttt{sepal length} and \texttt{petal length} for visualization purposes.
+    Although the perceptron rule is not restricted to two dimensions, only two features were considered (\texttt{sepal length} and \texttt{petal length}) for visualization purposes.
     Though we only chose the two flower classes Setosa and Versicolor for practical reasons, the perceptron algorithm can be extended to multi-class classification \textemdash for example, the \textbf{One-versus-All (OvA)} technique.
 
     \subsection{Extracting \texttt{X} and \texttt{y} from Iris dataset} \label{subsec:perc_iris_extract}
