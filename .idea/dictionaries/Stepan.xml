@@ -11,7 +11,9 @@
       <w>ateam</w>
       <w>barh</w>
       <w>bihistograms</w>
+      <w>bincount</w>
       <w>blackhawks</w>
+      <w>blas</w>
       <w>bmatrix</w>
       <w>boldsymbol</w>
       <w>boxplot</w>
@@ -40,6 +42,7 @@
       <w>gridline</w>
       <w>hischier</w>
       <w>hyperparameter</w>
+      <w>hyperparameters</w>
       <w>inear</w>
       <w>infty</w>
       <w>ipynb</w>
@@ -102,7 +105,9 @@
       <w>stepan</w>
       <w>subcaption</w>
       <w>subfigure</w>
+      <w>subfigures</w>
       <w>suptitle</w>
+      <w>thresholded</w>
       <w>tradeoff</w>
       <w>tukey</w>
       <w>underfitting</w>
