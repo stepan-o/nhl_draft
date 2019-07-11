@@ -117,5 +117,5 @@ methodology/design/~$players_table_schema.xlsx
 img/decision_boundaries/
 
 # LaTeX compiler output folders
-auxil/
-out/
+/auxil/
+/out/
