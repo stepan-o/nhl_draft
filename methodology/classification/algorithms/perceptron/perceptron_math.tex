@@ -43,12 +43,15 @@
     a $(p-1)$-dimensional hyperplane.
     This is called a linear classifier.
     More formally, we can put the idea behind artificial neurons into the context of a binary classification task where we refer to our two classes as 1 (positive class) and -1 (negative class) for simplicity.
+    Target coding schemes for two-class classification problems will differ depending on the type of the model: scheme in which $t \in \{0, 1\}$ is appropriate in the context of probabilistic models;
+    for the perceptron, however, it is more convenient to use target values $t = +1$ for class $C_1$ (positive class) and $t = -1$ for class $C_2$, which matches the choice of activation function\cite{Bishop2006}.
+
     There are many hyperplanes that might classify the data.
     We can then define a decision function ($\phi(z)$) that takes a linear combination of certain input values $x$ and a corresponding weight vector $w$, where $z$ is the so-called net input.
 
     \subsection{McCulloch-Pitts (MCP) neuron} \label{subsec:mcp}
 
-    Trying to understand how the biological brain works, in order to design AI, \textit{Warren McCulloch and Walter Pitts} published the first concept of a simplified brain cell, the so-called McCulloch-Pitts (MCP) neuron, in 1943\cite{McCulloch1990a}.
+    Trying to understand how the biological brain works, in order to design AI, \textit{Warren McCulloch} and \textit{Walter Pitts} published the first concept of a simplified brain cell, the so-called \textbf{McCulloch-Pitts (MCP) neuron}, in 1943\cite{McCulloch1990a}.
     Neurons are interconnected nerve cells in the brain that are involved in the processing and transmitting of chemical and electrical signals, which is illustrated in figure~\ref{fig:neuron}:
 
     \begin{figure}[hbt!]
@@ -64,9 +67,13 @@
 
     \subsection{Rosenblatt's Perceptron} \label{subsec:perceptron}
 
-    Only a few years later, \textit{Frank Rosenblatt} published the first concept of the perceptron learning rule based on the MCP neuron model\cite{Rosenblatt1957a}.
+    Only a few years later, \textit{Frank Rosenblatt} published the first concept of the \textbf{perceptron learning rule} based on the MCP neuron model\cite{Rosenblatt1957a}.
     With his perceptron rule, Rosenblatt proposed an algorithm that would automatically learn the optimal weight coefficients that are then multiplied with the input features in order to make the decision of whether a neuron fires or not.
     In the context of supervised learning and classification, such an algorithm could then be used to predict if a sample belongs to one class or the other.
+
+    The perceptron was intended to be a machine, rather than a program, and while its first implementation was in software for the IBM 704, it was subsequently implemented in custom-built hardware as the "Mark 1 perceptron".
+    This machine was designed for image recognition: it had an array of 400 photocells, randomly connected to the "neurons".
+    Weights were encoded in potentiometers, and weight updates during learning were performed by electric motors.
 
     \section{Mathematics of the perceptron} \label{sec:perc_math}
 
@@ -77,7 +84,7 @@
     We can then define a decision function ($\phi(z)$) that takes a linear combination of certain input values $x$ and a corresponding weight vector $w$, where $z$ is the so-called net input:
 
     \begin{equation}
-        \label{eq:z}
+        \label{eq:net_input}
         \vect{w} = \begin{bmatrix}
                        w_1 \\ \vdots \\ w_m
         \end{bmatrix}, \quad
@@ -88,7 +95,7 @@
     \end{equation}
 
     Now, if the net input of a particular sample $\vect{x}^{(i)}$ is greater than a defined threshold $\theta$, we predict class 1, and class -1 otherwise.
-    In the perceptron algorithm, the decision function $\phi(.)$ is a variant of a \textbf{unit step function}:
+    In the perceptron algorithm, the decision function $\phi( \cdot )$ is a variant of a \textbf{unit step function}:
 
     \begin{equation}
         \label{eq:perc_dec_func}

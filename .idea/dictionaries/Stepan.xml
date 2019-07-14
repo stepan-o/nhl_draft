@@ -26,6 +26,7 @@
       <w>cmap</w>
       <w>collinearity</w>
       <w>cska</w>
+      <w>csplayerid</w>
       <w>culloch</w>
       <w>datasets</w>
       <w>defenceman</w>
@@ -86,6 +87,7 @@
       <w>perceptron</w>
       <w>peterbo</w>
       <w>peterbu</w>
+      <w>postgre</w>
       <w>precleaned</w>
       <w>preprocesing</w>
       <w>preprocessing</w>
@@ -114,6 +116,7 @@
       <w>thresholded</w>
       <w>tradeoff</w>
       <w>tukey</w>
+      <w>uindex</w>
       <w>underfitting</w>
       <w>vahid</w>
       <w>vapnik</w>
